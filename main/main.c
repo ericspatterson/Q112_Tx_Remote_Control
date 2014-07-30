@@ -929,7 +929,7 @@ void IRLED_PWM(void){
 	PC1DIR = 0;		// PortC Bit1 set to Output Mode...
 
 	//I/O Type...
-	PC1C1  = 1;		// PortC Bit1 set to CMOS Output...
+	PC1C1  = 1;		// PortC Bit1 set to CMOS Output (1,1)...
 	PC1C0  = 1;		
 
 	//Purpose...
@@ -952,8 +952,8 @@ void IRLED_PWM(void){
 	//PWCD =  4000;		//4000  ~ 94.0  % duty cycle @ 120Hz
 	//PWCD =  4150;		//4150  ~ 99.0  % duty cycle @ 120Hz
 	//PWCD =    20;		//20    ~  0.4  % duty cycle @ 120Hz	
-	PWF1ED =    12;		//12    ~  0.25 % duty cycle @ 160Hz
+	PWF1ED =    4000;		//12    ~  0.25 % duty cycle @ 160Hz
 
-	PFRUN = 1;		// Turn ON
+	PFRUN = 1;		// Turn ON (1)
 
 }

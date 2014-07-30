@@ -1,7 +1,7 @@
 RASU8(ML610112)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1 
  Source File: _output\_obj\main.asm
  Object File: _output\_obj\main.obj
- Date  : 2014/07/29 Tue.[20:48]
+ Date  : 2014/07/29 Tue.[22:11]
  Title : 
 ## Loc. Object                   Line   Source Statements
 
@@ -1722,8 +1722,8 @@ RASU8(ML610112)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1
                                  1715   CLINEA 0000H 0001H 03A1H 0002H 0031H
 00:0000 92-A0 61-F2              1716   	rb	0f261h.1
                                  1717   
-                                 1718   ;;	PC1C1  = 1;		// PortC Bit1 set to CMOS Output...
-                                 1719   CLINEA 0000H 0001H 03A4H 0002H 0031H
+                                 1718   ;;	PC1C1  = 1;		// PortC Bit1 set to CMOS Output (1,1)...
+                                 1719   CLINEA 0000H 0001H 03A4H 0002H 0037H
 00:0004 90-A0 63-F2              1720   	sb	0f263h.1
                                  1721   
                                  1722   ;;	PC1C0  = 1;		
@@ -1752,92 +1752,93 @@ RASU8(ML610112)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1
 00:001E 10 01                    1745   	mov	r1,	#010h
 00:0020 13-90 60-F9              1746   	st	er0,	0f960h
                                  1747   
-                                 1748   ;;	PWF1ED =    12;		//12    ~  0.25 % duty cycle @ 160Hz
-                                 1749   CLINEA 0000H 0001H 03BBH 0002H 0036H
-00:0024 0C E0                    1750   	mov	er0,	#12
-00:0026 13-90 64-F9              1751   	st	er0,	0f964h
-                                 1752   
-                                 1753   ;;	PFRUN = 1;		// Turn ON
-                                 1754   CLINEA 0000H 0001H 03BDH 0002H 0017H
-00:002A 80-A0 73-F9              1755   	sb	0f973h.0
-                                 1756   CBLOCKEND 133 2 959
-                                 1757   
-                                 1758   ;;}
-                                 1759   CLINEA 0000H 0001H 03BFH 0001H 0001H
-00:002E 1F-FE                    1760   	rt
-                                 1761   CBLOCKEND 133 1 959
-                                 1762   CFUNCTIONEND 133
-                                 1763   
-                                 1764   	public _NackMCUConn
-                                 1765   	public _IRLED_PWM
-                                 1766   	public _checkI2C
-                                 1767   	public _main_clrWDT
-                                 1768   	public _main_reqNotHalt
-                                 1769   	public _AckMCUConn
-                                 1770   	public _InputRec
-                                 1771   	public _PortA_Digital_Inputs
-                                 1772   	public _main
-                                 1773   	public _I2C_RX_Data
-                                 1774   	public _PortD_Low
-                                 1775   	public _ListFWRev
-                                 1776   	public _NOP1000
-                                 1777   	public _OutputRec
-                                 1778   	public _PortC_Low
-                                 1779   	public _HelloWorld
-                                 1780   	public _PortB_Low
-                                 1781   	public _InputStatus
-                                 1782   	public _PortA_Low
-                                 1783   	public _analog_comparator
-                                 1784   	public _I2C_RX_REC
-                                 1785   	public _I2C_TX_REC
-                                 1786   	_RecWorld comm data 015h #00h
-                                 1787   	__flgUartFin comm data 01h #00h
-                                 1788   	_testI2C comm data 02h #00h
-                                 1789   	_ret comm data 02h #00h
-                                 1790   	_UART_VAR comm data 02h #00h
-                                 1791   	__flgI2CFin comm data 01h #00h
-                                 1792   	__reqNotHalt comm data 01h #00h
-                                 1793   	extrn code near : _irq_init
-                                 1794   	extrn code near : _uart_PortSet
-                                 1795   	extrn code near : _i2c_stop
-                                 1796   	extrn code near : _uart_init
-                                 1797   	extrn code near : _i2c_continue
-                                 1798   	extrn code near : _irq_di
-                                 1799   	extrn code near : _irq_ei
-                                 1800   	extrn code near : _irq_setHdr
-                                 1801   	extrn code near : _uart_stop
-                                 1802   	extrn code near : _uart_startSend
-                                 1803   	extrn code near : _i2c_startSend
-                                 1804   	extrn code near : _uart_continue
-                                 1805   	extrn code near : _i2c_init
-                                 1806   	extrn code : $$start_up
-                                 1807   
-  --------------------------     1808   	cseg #00h at 02h
-00:0002 00-00'                   1809   	dw	$$start_up
-                                 1810   
-  --------------------------     1811   	rseg $$NINITTAB
-??:0000 48 65 6C 6C 6F 20 57 6F  1812   	DB	"Hello World!  "
+                                 1748   ;;	PWF1ED =    4000;		//12    ~  0.25 % duty cycle @ 160Hz
+                                 1749   CLINEA 0000H 0001H 03BBH 0002H 0038H
+00:0024 A0 00                    1750   	mov	r0,	#0a0h
+00:0026 0F 01                    1751   	mov	r1,	#0fh
+00:0028 13-90 64-F9              1752   	st	er0,	0f964h
+                                 1753   
+                                 1754   ;;	PFRUN = 1;		// Turn ON (1)
+                                 1755   CLINEA 0000H 0001H 03BDH 0002H 001BH
+00:002C 80-A0 73-F9              1756   	sb	0f973h.0
+                                 1757   CBLOCKEND 133 2 959
+                                 1758   
+                                 1759   ;;}
+                                 1760   CLINEA 0000H 0001H 03BFH 0001H 0001H
+00:0030 1F-FE                    1761   	rt
+                                 1762   CBLOCKEND 133 1 959
+                                 1763   CFUNCTIONEND 133
+                                 1764   
+                                 1765   	public _NackMCUConn
+                                 1766   	public _IRLED_PWM
+                                 1767   	public _checkI2C
+                                 1768   	public _main_clrWDT
+                                 1769   	public _main_reqNotHalt
+                                 1770   	public _AckMCUConn
+                                 1771   	public _InputRec
+                                 1772   	public _PortA_Digital_Inputs
+                                 1773   	public _main
+                                 1774   	public _I2C_RX_Data
+                                 1775   	public _PortD_Low
+                                 1776   	public _ListFWRev
+                                 1777   	public _NOP1000
+                                 1778   	public _OutputRec
+                                 1779   	public _PortC_Low
+                                 1780   	public _HelloWorld
+                                 1781   	public _PortB_Low
+                                 1782   	public _InputStatus
+                                 1783   	public _PortA_Low
+                                 1784   	public _analog_comparator
+                                 1785   	public _I2C_RX_REC
+                                 1786   	public _I2C_TX_REC
+                                 1787   	_RecWorld comm data 015h #00h
+                                 1788   	__flgUartFin comm data 01h #00h
+                                 1789   	_testI2C comm data 02h #00h
+                                 1790   	_ret comm data 02h #00h
+                                 1791   	_UART_VAR comm data 02h #00h
+                                 1792   	__flgI2CFin comm data 01h #00h
+                                 1793   	__reqNotHalt comm data 01h #00h
+                                 1794   	extrn code near : _irq_init
+                                 1795   	extrn code near : _uart_PortSet
+                                 1796   	extrn code near : _i2c_stop
+                                 1797   	extrn code near : _uart_init
+                                 1798   	extrn code near : _i2c_continue
+                                 1799   	extrn code near : _irq_di
+                                 1800   	extrn code near : _irq_ei
+                                 1801   	extrn code near : _irq_setHdr
+                                 1802   	extrn code near : _uart_stop
+                                 1803   	extrn code near : _uart_startSend
+                                 1804   	extrn code near : _i2c_startSend
+                                 1805   	extrn code near : _uart_continue
+                                 1806   	extrn code near : _i2c_init
+                                 1807   	extrn code : $$start_up
+                                 1808   
+  --------------------------     1809   	cseg #00h at 02h
+00:0002 00-00'                   1810   	dw	$$start_up
+                                 1811   
+  --------------------------     1812   	rseg $$NINITTAB
+??:0000 48 65 6C 6C 6F 20 57 6F  1813   	DB	"Hello World!  "
 ??:0008 72 6C 64 21 20 20         >>>   
-??:000E 49 4E 50 5F 30 30 30 30  1813   	DB	"INP_00000000_00000000"
+??:000E 49 4E 50 5F 30 30 30 30  1814   	DB	"INP_00000000_00000000"
 ??:0016 30 30 30 30 5F 30 30 30   >>>   
 ??:001E 30 30 30 30 30 00         >>>   , 00H
-??:0024 00                       1814   	db	00h
-??:0025 49 4E 50 20 52 65 63 65  1815   	DB	"INP Received"
+??:0024 00                       1815   	db	00h
+??:0025 49 4E 50 20 52 65 63 65  1816   	DB	"INP Received"
 ??:002D 69 76 65 64 00            >>>   , 00H
-??:0032 00                       1816   	db	00h
-??:0033 4F 55 54 20 52 65 63 65  1817   	DB	"OUT Received         "
+??:0032 00                       1817   	db	00h
+??:0033 4F 55 54 20 52 65 63 65  1818   	DB	"OUT Received         "
 ??:003B 69 76 65 64 20 20 20 20   >>>   
 ??:0043 20 20 20 20 20 00         >>>   , 00H
-??:0049 00                       1818   	db	00h
-??:004A 4D 4C 36 31 30 51 31 31  1819   	DB	"ML610Q112 Connected!"
+??:0049 00                       1819   	db	00h
+??:004A 4D 4C 36 31 30 51 31 31  1820   	DB	"ML610Q112 Connected!"
 ??:0052 32 20 43 6F 6E 6E 65 63   >>>   
 ??:005A 74 65 64 21 00            >>>   , 00H
-??:005F 00                       1820   	db	00h
-??:0060 46 69 72 6D 77 61 72 65  1821   	DB	"Firmware Version: 01"
+??:005F 00                       1821   	db	00h
+??:0060 46 69 72 6D 77 61 72 65  1822   	DB	"Firmware Version: 01"
 ??:0068 20 56 65 72 73 69 6F 6E   >>>   
 ??:0070 3A 20 30 31 00            >>>   , 00H
-??:0075 00                       1822   	db	00h
-??:0076 50 6C 65 61 73 65 20 43  1823   	DB	"Please Close Port and change Target MCU under Device Options"
+??:0075 00                       1823   	db	00h
+??:0076 50 6C 65 61 73 65 20 43  1824   	DB	"Please Close Port and change Target MCU under Device Options"
 ??:007E 6C 6F 73 65 20 50 6F 72   >>>   
 ??:0086 74 20 61 6E 64 20 63 68   >>>   
 ??:008E 61 6E 67 65 20 54 61 72   >>>   
@@ -1845,122 +1846,122 @@ RASU8(ML610112)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1
 ??:009E 75 6E 64 65 72 20 44 65   >>>   
 ??:00A6 76 69 63 65 20 4F 70 74   >>>   
 ??:00AE 69 6F 6E 73 00            >>>   , 00H
-??:00B3 00                       1824   	db	00h
-??:00B4 49 32 43 54 58 20 43 4D  1825   	DB	"I2CTX CMD Received!"
+??:00B3 00                       1825   	db	00h
+??:00B4 49 32 43 54 58 20 43 4D  1826   	DB	"I2CTX CMD Received!"
 ??:00BC 44 20 52 65 63 65 69 76   >>>   
 ??:00C4 65 64 21 00               >>>   , 00H
-??:00C8 00                       1826   	db	00h
-??:00C9 49 32 43 52 58 20 43 4D  1827   	DB	"I2CRX CMD Received!"
+??:00C8 00                       1827   	db	00h
+??:00C9 49 32 43 52 58 20 43 4D  1828   	DB	"I2CRX CMD Received!"
 ??:00D1 44 20 52 65 63 65 69 76   >>>   
 ??:00D9 65 64 21 00               >>>   , 00H
-??:00DD 00                       1828   	db	00h
-??:00DE 49 32 43 2D 52 20 58 20  1829   	DB	"I2C-R X X X X X X X X"
+??:00DD 00                       1829   	db	00h
+??:00DE 49 32 43 2D 52 20 58 20  1830   	DB	"I2C-R X X X X X X X X"
 ??:00E6 58 20 58 20 58 20 58 20   >>>   
 ??:00EE 58 20 58 20 58 00         >>>   , 00H
-??:00F4 00                       1830   	db	00h
-??:00F5 5C                       1831   	db	05ch
-??:00F6 FA                       1832   	db	0fah
-??:00F7 01                       1833   	db	01h
-                                 1834   
-  --------------------------     1835   	rseg $$TAB_uartSetParam$main
-00:0000                          1836   __uartSetParam :
-00:0000 80-25                    1837   	dw	02580h
-00:0002 00-00                    1838   	dw	00h
-00:0004 00                       1839   	db	00h
-00:0005 02                       1840   	db	02h
-00:0006 00                       1841   	db	00h
-00:0007 00                       1842   	db	00h
-00:0008 00                       1843   	db	00h
-00:0009 00                       1844   	align
-                                 1845   
-  --------------------------     1846   	rseg $$NINITVAR
-00:0000                          1847   _HelloWorld :
-00:0000                          1848   	ds	0eh
-00:000E                          1849   _InputStatus :
-00:000E                          1850   	ds	017h
-00:0025                          1851   _InputRec :
-00:0025                          1852   	ds	0eh
-00:0033                          1853   _OutputRec :
-00:0033                          1854   	ds	017h
-00:004A                          1855   _AckMCUConn :
-00:004A                          1856   	ds	016h
-00:0060                          1857   _ListFWRev :
-00:0060                          1858   	ds	016h
-00:0076                          1859   _NackMCUConn :
-00:0076                          1860   	ds	03eh
-00:00B4                          1861   _I2C_TX_REC :
-00:00B4                          1862   	ds	015h
-00:00C9                          1863   _I2C_RX_REC :
-00:00C9                          1864   	ds	015h
-00:00DE                          1865   _I2C_RX_Data :
-00:00DE                          1866   	ds	017h
-00:00F5                          1867   _BU21072Address :
-00:00F5                          1868   	ds	01h
-00:00F6                          1869   _LEDDrive_LED_CH :
-00:00F6                          1870   	ds	01h
-00:00F7                          1871   _LEDDrive_LED_CH_Contents :
-00:00F7                          1872   	ds	01h
-                                 1873   
-  --------------------------     1874   	rseg $$NVARmain
-00:0000                          1875   _I2C_BUFF :
-00:0000                          1876   	ds	02eh
-00:002E                          1877   _I2CNumBytes :
-00:002E                          1878   	ds	01h
-00:002F                          1879   _Data2Str_temp :
-00:002F                          1880   	ds	01h
-00:0030                          1881   _RegAddr_temp :
-00:0030                          1882   	ds	01h
-00:0031                          1883   _Data3Str_temp :
-00:0031                          1884   	ds	01h
-00:0032                          1885   _I2CReceInfo :
-00:0032                          1886   	ds	08h
-00:003A                          1887   _Data0Str_temp :
-00:003A                          1888   	ds	01h
-00:003B                          1889   _Data1Str_temp :
-00:003B                          1890   	ds	01h
-00:003C                          1891   _Data4Str_temp :
-00:003C                          1892   	ds	01h
-00:003D                          1893   _Data5Str_temp :
-00:003D                          1894   	ds	01h
-00:003E                          1895   _Data6Str_temp :
-00:003E                          1896   	ds	01h
-00:003F                          1897   _Data7Str_temp :
-00:003F                          1898   	ds	01h
-00:0040                          1899   _I2CNumBytes_temp :
-00:0040                          1900   	ds	01h
-00:0041                          1901   _Data2Str :
-00:0041                          1902   	ds	01h
-00:0042                          1903   _Data3Str :
-00:0042                          1904   	ds	01h
-00:0043                          1905   _RegAddr :
-00:0043                          1906   	ds	01h
-00:0044                          1907   _Data0Str :
-00:0044                          1908   	ds	01h
-00:0045                          1909   _Data1Str :
-00:0045                          1910   	ds	01h
-00:0046                          1911   _I2CAdd :
-00:0046                          1912   	ds	01h
-00:0047                          1913   _chari :
-00:0047                          1914   	ds	01h
-00:0048                          1915   _charj :
-00:0048                          1916   	ds	01h
-00:0049                          1917   _chark :
-00:0049                          1918   	ds	01h
-00:004A                          1919   _Data6Str :
-00:004A                          1920   	ds	01h
-00:004B                          1921   	align
-00:004C                          1922   _I2CSendInfo :
-00:004C                          1923   	ds	08h
-00:0054                          1924   _Data7Str :
-00:0054                          1925   	ds	01h
-00:0055                          1926   _Data4Str :
-00:0055                          1927   	ds	01h
-00:0056                          1928   _Data5Str :
-00:0056                          1929   	ds	01h
-00:0057                          1930   _I2CAdd_temp :
-00:0057                          1931   	ds	01h
-                                 1932   
-                                 1933   	end
+??:00F4 00                       1831   	db	00h
+??:00F5 5C                       1832   	db	05ch
+??:00F6 FA                       1833   	db	0fah
+??:00F7 01                       1834   	db	01h
+                                 1835   
+  --------------------------     1836   	rseg $$TAB_uartSetParam$main
+00:0000                          1837   __uartSetParam :
+00:0000 80-25                    1838   	dw	02580h
+00:0002 00-00                    1839   	dw	00h
+00:0004 00                       1840   	db	00h
+00:0005 02                       1841   	db	02h
+00:0006 00                       1842   	db	00h
+00:0007 00                       1843   	db	00h
+00:0008 00                       1844   	db	00h
+00:0009 00                       1845   	align
+                                 1846   
+  --------------------------     1847   	rseg $$NINITVAR
+00:0000                          1848   _HelloWorld :
+00:0000                          1849   	ds	0eh
+00:000E                          1850   _InputStatus :
+00:000E                          1851   	ds	017h
+00:0025                          1852   _InputRec :
+00:0025                          1853   	ds	0eh
+00:0033                          1854   _OutputRec :
+00:0033                          1855   	ds	017h
+00:004A                          1856   _AckMCUConn :
+00:004A                          1857   	ds	016h
+00:0060                          1858   _ListFWRev :
+00:0060                          1859   	ds	016h
+00:0076                          1860   _NackMCUConn :
+00:0076                          1861   	ds	03eh
+00:00B4                          1862   _I2C_TX_REC :
+00:00B4                          1863   	ds	015h
+00:00C9                          1864   _I2C_RX_REC :
+00:00C9                          1865   	ds	015h
+00:00DE                          1866   _I2C_RX_Data :
+00:00DE                          1867   	ds	017h
+00:00F5                          1868   _BU21072Address :
+00:00F5                          1869   	ds	01h
+00:00F6                          1870   _LEDDrive_LED_CH :
+00:00F6                          1871   	ds	01h
+00:00F7                          1872   _LEDDrive_LED_CH_Contents :
+00:00F7                          1873   	ds	01h
+                                 1874   
+  --------------------------     1875   	rseg $$NVARmain
+00:0000                          1876   _I2C_BUFF :
+00:0000                          1877   	ds	02eh
+00:002E                          1878   _I2CNumBytes :
+00:002E                          1879   	ds	01h
+00:002F                          1880   _Data2Str_temp :
+00:002F                          1881   	ds	01h
+00:0030                          1882   _RegAddr_temp :
+00:0030                          1883   	ds	01h
+00:0031                          1884   _Data3Str_temp :
+00:0031                          1885   	ds	01h
+00:0032                          1886   _I2CReceInfo :
+00:0032                          1887   	ds	08h
+00:003A                          1888   _Data0Str_temp :
+00:003A                          1889   	ds	01h
+00:003B                          1890   _Data1Str_temp :
+00:003B                          1891   	ds	01h
+00:003C                          1892   _Data4Str_temp :
+00:003C                          1893   	ds	01h
+00:003D                          1894   _Data5Str_temp :
+00:003D                          1895   	ds	01h
+00:003E                          1896   _Data6Str_temp :
+00:003E                          1897   	ds	01h
+00:003F                          1898   _Data7Str_temp :
+00:003F                          1899   	ds	01h
+00:0040                          1900   _I2CNumBytes_temp :
+00:0040                          1901   	ds	01h
+00:0041                          1902   _Data2Str :
+00:0041                          1903   	ds	01h
+00:0042                          1904   _Data3Str :
+00:0042                          1905   	ds	01h
+00:0043                          1906   _RegAddr :
+00:0043                          1907   	ds	01h
+00:0044                          1908   _Data0Str :
+00:0044                          1909   	ds	01h
+00:0045                          1910   _Data1Str :
+00:0045                          1911   	ds	01h
+00:0046                          1912   _I2CAdd :
+00:0046                          1913   	ds	01h
+00:0047                          1914   _chari :
+00:0047                          1915   	ds	01h
+00:0048                          1916   _charj :
+00:0048                          1917   	ds	01h
+00:0049                          1918   _chark :
+00:0049                          1919   	ds	01h
+00:004A                          1920   _Data6Str :
+00:004A                          1921   	ds	01h
+00:004B                          1922   	align
+00:004C                          1923   _I2CSendInfo :
+00:004C                          1924   	ds	08h
+00:0054                          1925   _Data7Str :
+00:0054                          1926   	ds	01h
+00:0055                          1927   _Data4Str :
+00:0055                          1928   	ds	01h
+00:0056                          1929   _Data5Str :
+00:0056                          1930   	ds	01h
+00:0057                          1931   _I2CAdd_temp :
+00:0057                          1932   	ds	01h
+                                 1933   
+                                 1934   	end
 
 
 
@@ -1972,4 +1973,4 @@ RASU8(ML610112)Relocatable Assembler, Ver.1.61.2    assemble list. page:   1
 
   Errors   : 0
   Warnings : 0  (/Wrpeast)
-  Lines    : 1933
+  Lines    : 1934

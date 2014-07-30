@@ -1,5 +1,5 @@
 RLU8 Object Linker, Ver.1.51.2 Linkage Information
-[Tue Jul 29 20:48:02 2014]
+[Tue Jul 29 22:11:51 2014]
 
 
                          ------------------
@@ -142,19 +142,19 @@ Link Map - Program memory space #0 ( ROMWINDOW: 0000 - 7FFF )
       S CODE   00:1062    00:107D    001C(28)          $$_intT32HINT$irq
       S CODE   00:107E    00:1099    001C(28)          $$_intVLSINT$irq
       S CODE   00:109A    00:10B9    0020(32)          $$SetOSC$main
-      S CODE   00:10BA    00:10E9    0030(48)          $$IRLED_PWM$main
-      S CODE   00:10EA    00:1105    001C(28)          $$_intSADINT$irq
-      S CODE   00:1106    00:1121    001C(28)          $$_intT128HINT$irq
-      S CODE   00:1122    00:113B    001A(26)          $$_intWDTINT$irq
-      S CODE   00:113C    00:1157    001C(28)          $$_intTMFINT$irq
-      S CODE   00:1158    00:1173    001C(28)          $$_intTMBINT$irq
-      S CODE   00:1174    00:118F    001C(28)          $$_intI2CSINT$irq
-      S CODE   00:1190    00:11AB    001C(28)          $$_intSIO0INT$irq
-      S CODE   00:11AC    00:11D9    002E(46)          $$div32u8sw
-      S CODE   00:11DA    00:11F5    001C(28)          $$_intI2CMINT$irq
-      S CODE   00:11F6    00:1285    0090(144)         $$NCODml610112sw
-      S CODE   00:1286    00:12FB    0076(118)         $$i2c_startSend$i2c
->GAP<          00:12FC    00:7FDF    6CE4(27876)       (ROM)
+      S CODE   00:10BA    00:10EB    0032(50)          $$IRLED_PWM$main
+      S CODE   00:10EC    00:1107    001C(28)          $$_intSADINT$irq
+      S CODE   00:1108    00:1123    001C(28)          $$_intT128HINT$irq
+      S CODE   00:1124    00:113D    001A(26)          $$_intWDTINT$irq
+      S CODE   00:113E    00:1159    001C(28)          $$_intTMFINT$irq
+      S CODE   00:115A    00:1175    001C(28)          $$_intTMBINT$irq
+      S CODE   00:1176    00:1191    001C(28)          $$_intI2CSINT$irq
+      S CODE   00:1192    00:11AD    001C(28)          $$_intSIO0INT$irq
+      S CODE   00:11AE    00:11DB    002E(46)          $$div32u8sw
+      S CODE   00:11DC    00:11F7    001C(28)          $$_intI2CMINT$irq
+      S CODE   00:11F8    00:1287    0090(144)         $$NCODml610112sw
+      S CODE   00:1288    00:12FD    0076(118)         $$i2c_startSend$i2c
+>GAP<          00:12FE    00:7FDF    6CE2(27874)       (ROM)
       S CODE   00:7FE0    00:7FFF    0020(32)          (absolute)
 
 
@@ -220,7 +220,7 @@ Not Linked segments:
      --------------------------------------------------------------
 
 
-Total size (CODE  ) = 011F6   (4598)
+Total size (CODE  ) = 011F8   (4600)
 Total size (DATA  ) = 002C7   (711)
 Total size (BIT   ) = 00000.0 (0.0)
 Total size (NVDATA) = 00000   (0)
@@ -236,7 +236,7 @@ Module         Value     Type         Symbol
 i2c
                00:09AC   Pub CODE     _i2c_stop
                00:0DAC   Pub CODE     _i2c_continue
-               00:1286   Pub CODE     _i2c_startSend
+               00:1288   Pub CODE     _i2c_startSend
                00:07CA   Pub CODE     _i2c_init
                00:EEEA   Loc DATA     __gsCtrlParam
 
@@ -248,24 +248,24 @@ irq
                00:0370   Loc CODE     __intCMP0INT
                00:039E   Loc CODE     __intTM8INT
                00:03BA   Loc CODE     __intTM9INT
-               00:1106   Loc CODE     __intT128HINT
+               00:1108   Loc CODE     __intT128HINT
                00:0566   Loc CODE     __intT2HINT
-               00:11DA   Loc CODE     __intI2CMINT
-               00:1122   Loc CODE     __intWDTINT
+               00:11DC   Loc CODE     __intI2CMINT
+               00:1124   Loc CODE     __intWDTINT
                00:0314   Loc CODE     __intPA0INT
                00:040A   Loc CODE     __intTMAINT
                00:0330   Loc CODE     __intPA1INT
-               00:1190   Loc CODE     __intSIO0INT
-               00:1174   Loc CODE     __intI2CSINT
-               00:10EA   Loc CODE     __intSADINT
+               00:1192   Loc CODE     __intSIO0INT
+               00:1176   Loc CODE     __intI2CSINT
+               00:10EC   Loc CODE     __intSADINT
                00:01E4   Loc CODE     __intPB0INT
                00:09FA   Loc CODE     __branchHdr
                00:03D6   Loc CODE     __intTMEINT
                00:0200   Loc CODE     __intPB1INT
-               00:1158   Loc CODE     __intTMBINT
+               00:115A   Loc CODE     __intTMBINT
                00:1046   Loc CODE     __intPA2INT
                00:01C8   Loc CODE     __intT16HINT
-               00:113C   Loc CODE     __intTMFINT
+               00:113E   Loc CODE     __intTMFINT
                00:100E   Loc CODE     __intPB2INT
                00:102A   Loc CODE     __intPB3INT
                00:08F0   Loc CODE     __intPWDINT
@@ -349,19 +349,19 @@ Module         Value     Type         Symbol
 ml610112
               0000EFFF   Loc NUMBER   NEAR_RAM_END
               0000E000   Loc NUMBER   NEAR_RAM_START
-               00:1218   Loc CODE     __wdtcounter_clear
+               00:121A   Loc CODE     __wdtcounter_clear
               000000FF   Loc NUMBER   _$$WINVAL
                00:7FFF   Loc TABLE    _$$ROMWINEND
-               00:11FA   Loc CODE     $begin
+               00:11FC   Loc CODE     $begin
                00:0000   Loc TABLE    _$$ROMWINSTART
-               00:122C   Loc CODE     __init_loop
-               00:1278   Loc CODE     __init_end
-               00:11F8   Loc CODE     $$brk_reset
-               00:1238   Loc CODE     __skip
-               00:1254   Loc CODE     __init_loop2
-               00:1266   Loc CODE     __loop_by_byte
-               00:1208   Loc CODE     __near_ram_loop
-               00:11F6   Pub CODE     $$start_up
+               00:122E   Loc CODE     __init_loop
+               00:127A   Loc CODE     __init_end
+               00:11FA   Loc CODE     $$brk_reset
+               00:123A   Loc CODE     __skip
+               00:1256   Loc CODE     __init_loop2
+               00:1268   Loc CODE     __loop_by_byte
+               00:120A   Loc CODE     __near_ram_loop
+               00:11F8   Pub CODE     $$start_up
 
 
 Module         Value     Type         Symbol
